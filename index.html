@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="taskListApp" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List App</title>
+    <!-- This is the the  link in AngularJS documentation-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="task-list.js"></script>
+
+    <!-- Using Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="task-list.css">
+
+</head>
+
+<body>
+    <div class="mx-auto mt-5 jumbotron" style="width: 500px;">
+        <h2 class="font-weight-bold">To-Do List</h2>
+        <form class='form-inline' ng-submit="tc.addTask()">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="tc.tarefaText" size="30"
+                    placeholder="Type a new task">
+                <input class="btn btn-primary ml-2" type="submit" value="+">
+            </div>
+        </form>
+        <br>
+        <div ng-controller="taskListController as tc">
+            <div class="mb-2">
+                Remain {{tc.remain()}} of {{tc.tasks.length}}
+                [<a href="" ng-click="tc.record()">Record Tasks</a>]
+
+            </div>
+            <ui class="unstyled">
+                <li ng-repeat="trf in tc.tasks">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="trf.done">
+                        <span class="feito-{{trf.done}}">{{trf.text}}</span>
+
+                    </label>
+
+                </li>
+
+            </ui>
+
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
